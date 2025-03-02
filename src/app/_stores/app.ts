@@ -9,8 +9,8 @@ type AppState = {
 export const useAppStore = create<AppState>((set) => ({
   notifications: [],
   setNotifications: (notifications: Notification[]) => {
-    set(() => ({
-      notifications: notifications,
-    }));
+    set({
+      notifications,
+    });
   },
 }));

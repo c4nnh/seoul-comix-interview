@@ -22,4 +22,66 @@ model User {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  savedRestaurants SavedRestaurant[]
+}
+
+enum RestaurantCategory {
+  SUSHI
+  UNAGI
+  TEMPURA
+  TONKATSU
+  YAKITORI
+  SUKIYAKI
+  SOBA
+  RAMEN
+  YAKISOBA
+  OKONOMIYAKI
+  DONBURI
+  ODEN
+  KAISEKI
+  HAMBAGU
+  TEPPANYAKI
+  CURRY
+  YAKINIKU
+  NABE
+  CAFE
+  IZAKAYA
+  OTHER
+}
+
+enum RestaurantFeaturedIcon {
+  STARS_02
+}
+
+model Restaurant {
+  id String @id @default(uuid())
+
+  name         String
+  description  String
+  category     RestaurantCategory
+  images       String[]
+  rating       Float
+  ratingCount  Int
+  city         String
+  priceFrom    Int
+  priceTo      Int
+  featuredText String
+  featuredIcon RestaurantFeaturedIcon
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  savedRestaurants SavedRestaurant[]
+}
+
+model SavedRestaurant {
+  user         User       @relation(fields: [userId], references: [id])
+  userId       String
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id])
+  restaurantId String
+
+  createdAt DateTime @default(now())
+
+  @@id([userId, restaurantId])
 }

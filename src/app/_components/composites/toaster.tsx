@@ -31,6 +31,7 @@ export function Toaster() {
           ? "destructive"
           : "success",
       duration: 2000,
+      
     });
   }, [notifications, toast]);
 

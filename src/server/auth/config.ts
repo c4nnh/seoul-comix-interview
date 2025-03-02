@@ -1,7 +1,7 @@
 import { env } from "@/env";
-import { logger } from "@/utils/logger";
 import { PrismaAdapter } from "@auth/prisma-adapter";
-import { AuthOptions, DefaultSession } from "next-auth";
+import { Logger } from "@logtail/next";
+import { AuthOptions, DefaultSession, getServerSession } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { prisma } from "../database";
 import { hashPassword } from "../utils/user";
@@ -35,6 +35,7 @@ export const config: AuthOptions = {
         password: { label: "Password", type: "password" },
       },
       authorize: async (credentials) => {
+        const logger = new Logger();
         logger.info("Login", { username: credentials?.username });
 
         if (!credentials?.username || !credentials.password) {
@@ -65,12 +66,34 @@ export const config: AuthOptions = {
   ],
   adapter: PrismaAdapter(prisma),
   callbacks: {
-    session: ({ session, user }) => ({
-      ...session,
-      user: {
-        ...session.user,
-        id: user.id,
-      },
-    }),
+    session: async ({ session, user: sessionUser, token }) => {
+      const userId = (token?.id ||
+        sessionUser?.id ||
+        session.user?.id) as string;
+
+      const user = await prisma.user.findUnique({
+        where: { id: userId },
+        select: {
+          id: true,
+          name: true,
+          username: true,
+        },
+      });
+
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          ...sessionUser,
+          ...user,
+          id: userId,
+        },
+      };
+    },
+    jwt: ({ token, user }) => {
+      return { ...token, ...user };
+    },
   },
 };
+
+export const getServerAuthSession = () => getServerSession(config);

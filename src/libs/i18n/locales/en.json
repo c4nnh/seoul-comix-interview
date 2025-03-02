@@ -1,0 +1,40 @@
+{
+  "common": {
+    "southKoreanWon": "The South Korean Won",
+    "all": "All"
+  },
+  "login": {
+    "login": "Login",
+    "username": "Username",
+    "password": "Password"
+  },
+  "favorite": {
+    "add": "Add favorite",
+    "remove": "Remove favorite"
+  },
+  "restaurant": {
+    "category": {
+      "sushi": "Sushi",
+      "unagi": "Unagi",
+      "tempura": "Tempura",
+      "tonkatsu": "Tonkatsu",
+      "yakitori": "Yakitori",
+      "sukiyaki": "Sukiyaki",
+      "soba": "Soba",
+      "ramen": "Ramen",
+      "yakisoba": "Yakisoba",
+      "okonomiyaki": "Okonomiyaki",
+      "donburi": "Donburi",
+      "oden": "Oden",
+      "kaiseki": "Kaiseki",
+      "hambagu": "Hambagu",
+      "teppanyaki": "Teppanyaki",
+      "curry": "Curry",
+      "yakiniku": "Yakiniku",
+      "nabe": "Nabe",
+      "cafe": "Cafe",
+      "izakaya": "Izakaya",
+      "other": "Other"
+    }
+  }
+}

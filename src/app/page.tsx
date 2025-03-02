@@ -1,13 +1,30 @@
 "use client";
 
-import { useSession } from "next-auth/react";
+import { trpc } from "@/trpc/client";
+import { CategoryFilter } from "./_components/containers/restaurant/category-filter";
+import { RestaurantListItem } from "./_components/containers/restaurant/list-item";
+import { cn } from "./_libs/classnames";
+import { useRestaurantStore } from "./_stores/restaurant";
 
-export default function Home() {
-  const { data: session } = useSession();
+export default function HomePage() {
+  const { filter } = useRestaurantStore();
+  const { data: restaurantData } =
+    trpc.restaurant.getRestaurants.useQuery(filter);
 
   return (
-    <div className="bg-red-200 text-red-200">
-      hello {session ? session.user.name : "anonymous"}
+    <div className="flex flex-col gap-4 p-4">
+      <CategoryFilter />
+      <div
+        className={cn(
+          "flex",
+          "flex-col sm:flex-row sm:flex-wrap sm:justify-center",
+          "gap-4 sm:gap-12",
+        )}
+      >
+        {restaurantData?.restaurants.map((restaurant) => (
+          <RestaurantListItem key={restaurant.id} restaurant={restaurant} />
+        ))}
+      </div>
     </div>
   );
 }

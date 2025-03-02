@@ -1,0 +1,40 @@
+{
+  "common": {
+    "southKoreanWon": "만원",
+    "all": "전체"
+  },
+  "login": {
+    "login": "Login",
+    "username": "Username",
+    "password": "Password"
+  },
+  "favorite": {
+    "add": "Add favorite",
+    "remove": "Remove favorite"
+  },
+  "restaurant": {
+    "category": {
+      "sushi": "스시·해산물",
+      "unagi": "장어",
+      "tempura": "덴푸라",
+      "tonkatsu": "돈카츠·쿠시카츠",
+      "yakitori": "야키토리·꼬치",
+      "sukiyaki": "스키야키·샤브샤브",
+      "soba": "소바·우동",
+      "ramen": "라멘·츠케멘",
+      "yakisoba": "야키소바",
+      "okonomiyaki": "오코노미야키·타코야키",
+      "donburi": "덮밥",
+      "oden": "오뎅",
+      "kaiseki": "가이세키·일식",
+      "hambagu": "함바그·오므라이스",
+      "teppanyaki": "스테이크·철판요리",
+      "curry": "카레",
+      "yakiniku": "야키니쿠·호르몬",
+      "nabe": "나베",
+      "cafe": "카페·디저트",
+      "izakaya": "이자카야·바",
+      "other": "기타 일본 음식"
+    }
+  }
+}
