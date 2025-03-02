@@ -11,6 +11,7 @@ export async function seedRestaurants() {
 
   const response = await prisma.restaurant.createMany({
     data: restaurants.map(transformRestaurant),
+    skipDuplicates: true,
   });
 
   console.log(`Inserted ${response.count}.`);

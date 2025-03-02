@@ -1,13 +1,14 @@
 "use client";
 
 import { trpc } from "@/trpc/client";
+import { Pagination } from "./_components/composites/pagination";
 import { CategoryFilter } from "./_components/containers/restaurant/category-filter";
 import { RestaurantListItem } from "./_components/containers/restaurant/list-item";
 import { cn } from "./_libs/classnames";
 import { useRestaurantStore } from "./_stores/restaurant";
 
 export default function HomePage() {
-  const { filter } = useRestaurantStore();
+  const { filter, setFilter } = useRestaurantStore();
   const { data: restaurantData } =
     trpc.restaurant.getRestaurants.useQuery(filter);
 
@@ -25,6 +26,11 @@ export default function HomePage() {
           <RestaurantListItem key={restaurant.id} restaurant={restaurant} />
         ))}
       </div>
+      <Pagination
+        currentPage={filter.page}
+        totalPage={restaurantData?.pagination?.totalPage || 0}
+        onPageChange={(page) => setFilter({ page })}
+      />
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { cn } from "@/app/_libs/classnames";
-import { RestaurantFilter, useRestaurantStore } from "@/app/_stores/restaurant";
+import { useRestaurantStore } from "@/app/_stores/restaurant";
 import { getCategoryLabel } from "@/app/_utils/category";
 import { RestaurantCategory } from "@prisma/client";
 import { useTranslations } from "next-intl";
@@ -36,7 +36,7 @@ export function CategoryFilter() {
             setFilter({
               category,
               page: 1,
-            } as RestaurantFilter)
+            })
           }
           size="sm"
         >
