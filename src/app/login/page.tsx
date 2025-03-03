@@ -52,7 +52,7 @@ export default function LoginPage() {
       setNotifications([
         {
           type: NotificationType.ERROR,
-          message: translate(ErrorCode.INTERNAL_SEVERAL_ERROR),
+          message: translate(ErrorCode.INTERNAL_SEVER_ERROR),
         },
       ]);
     }
