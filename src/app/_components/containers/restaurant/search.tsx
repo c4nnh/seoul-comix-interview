@@ -16,7 +16,7 @@ export function RestaurantSearch({
 }: Props) {
   const t = useTranslations();
   const { filter, setFilter } = useRestaurantStore();
-  const [searchTerm, setSearchTerm] = useState(filter.search || "");
+  const [searchTerm, setSearchTerm] = useState(filter.search);
 
   useEffect(() => {
     const handler = setTimeout(() => {

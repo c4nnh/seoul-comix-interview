@@ -16,7 +16,9 @@
     "login": "Login",
     "logout": "Logout",
     "username": "Username",
-    "password": "Password"
+    "password": "Password",
+    "confirmLogout": "Confirm logout",
+    "confirmLogin": "You need to login first to use this feature"
   },
   "favorite": {
     "add": "Add favorite",

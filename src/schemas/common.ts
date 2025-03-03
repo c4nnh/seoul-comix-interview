@@ -19,5 +19,3 @@ export const GetListBaseSchema = PaginationParamsSchema.merge(
     search: z.string().optional(),
   }),
 );
-
-export const IdSchema = z.string().uuid();

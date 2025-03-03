@@ -1,6 +1,8 @@
 "use client";
 
+import { useRestaurantStore } from "@/app/_stores/restaurant";
 import { setLocale } from "@/services/locale";
+import { trpc } from "@/trpc/client";
 import { Locale } from "@/types/locale";
 import { signOut, useSession } from "next-auth/react";
 import { useLocale, useTranslations } from "next-intl";
@@ -59,9 +61,12 @@ export function Header() {
 
 function Logout() {
   const t = useTranslations();
+  const trpcUtils = trpc.useUtils();
+  const { filter } = useRestaurantStore();
 
   async function handleLogout() {
     await signOut();
+    trpcUtils.restaurant.getRestaurants.invalidate(filter);
   }
 
   return (
@@ -71,15 +76,11 @@ function Logout() {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>
-            Are you absolutely sure that you want to logout?
-          </DialogTitle>
+          <DialogTitle>{t("auth.confirmLogout")}</DialogTitle>
         </DialogHeader>
         <DialogFooter className="mt-4 !justify-between">
-          <DialogClose>
-            <Button variant="outline" className="px-0">
-              {t("common.cancel")}
-            </Button>
+          <DialogClose asChild>
+            <Button variant="outline">{t("common.cancel")}</Button>
           </DialogClose>
           <Button onClick={handleLogout}>{t("auth.logout")}</Button>
         </DialogFooter>

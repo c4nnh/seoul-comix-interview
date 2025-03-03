@@ -14,6 +14,7 @@ type RestaurantState = {
 const initFilter: RestaurantFilter = {
   page: 1,
   limit: PAGE_LIMIT,
+  search: "",
 };
 
 export const useRestaurantStore = create<RestaurantState>((set, get) => ({

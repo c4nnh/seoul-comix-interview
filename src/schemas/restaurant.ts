@@ -1,6 +1,6 @@
 import { RestaurantCategory } from "@prisma/client";
 import { z } from "zod";
-import { GetListBaseSchema, IdSchema } from "./common";
+import { GetListBaseSchema } from "./common";
 
 export const GetListRestaurantSchema = GetListBaseSchema.merge(
   z.object({
@@ -33,9 +33,9 @@ export const GetListRestaurantSchema = GetListBaseSchema.merge(
 );
 
 export const AddFavoriteSchema = z.object({
-  restaurantId: IdSchema,
+  restaurantId: z.string(),
 });
 
 export const RemoveFavoriteSchema = z.object({
-  restaurantId: IdSchema,
+  restaurantId: z.string(),
 });

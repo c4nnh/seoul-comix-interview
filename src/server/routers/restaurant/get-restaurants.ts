@@ -39,6 +39,9 @@ export const getRestaurantsRouter = createTRPCRouter({
               where: {
                 userId: ctx.session?.user.id,
               },
+              select: {
+                userId: true,
+              },
             },
           },
         }),
@@ -48,7 +51,9 @@ export const getRestaurantsRouter = createTRPCRouter({
       return {
         restaurants: restaurants.map(({ savedRestaurants, ...restaurant }) => ({
           ...restaurant,
-          isFavorite: !!savedRestaurants.length,
+          isFavorite: savedRestaurants.some(
+            (item) => item.userId === ctx.session?.user.id,
+          ),
         })),
         pagination: transformPaginationData({ page, limit, total }),
       };
