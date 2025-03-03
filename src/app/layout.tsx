@@ -19,8 +19,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Restaurant management",
-  description: "Developed by Can Ngo",
+  title: "Your restaurants",
+  description: "Find your favorite restaurants",
+  creator: "Can Ngo",
+  icons: [{ rel: "icon", url: "/logo.svg" }],
+  openGraph: {
+    title: "Your restaurants",
+    description: "Find your favorite restaurants",
+    images: "/logo.svg",
+  },
 };
 
 export default async function RootLayout({
