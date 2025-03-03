@@ -4,6 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Toaster } from "./_components/composites/toaster";
+import { AppLayout } from "./_layouts/app";
 import { SessionProvider } from "./_providers/session";
 import "./globals.css";
 
@@ -36,7 +37,9 @@ export default async function RootLayout({
       >
         <NextIntlClientProvider messages={messages}>
           <TRPCClientProvider>
-            <SessionProvider>{children}</SessionProvider>
+            <SessionProvider>
+              <AppLayout>{children}</AppLayout>
+            </SessionProvider>
             <Toaster />
           </TRPCClientProvider>
         </NextIntlClientProvider>

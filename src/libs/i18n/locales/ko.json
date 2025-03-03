@@ -1,10 +1,20 @@
 {
   "common": {
     "southKoreanWon": "만원",
-    "all": "전체"
+    "all": "전체",
+    "noData": "There's no data",
+    "openMenu": "Open menu",
+    "cancel": "Cancel",
+    "search": "Search"
   },
-  "login": {
+  "language": {
+    "select": "Select language",
+    "english": "English",
+    "korean": "Korean"
+  },
+  "auth": {
     "login": "Login",
+    "logout": "Logout",
     "username": "Username",
     "password": "Password"
   },

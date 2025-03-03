@@ -5,7 +5,7 @@ import { RestaurantCategory } from "@prisma/client";
 import { useTranslations } from "next-intl";
 import { Button } from "../../ui/button";
 
-export function CategoryFilter() {
+export function RestaurantCategoryFilter() {
   const t = useTranslations();
   const { filter, setFilter } = useRestaurantStore();
 

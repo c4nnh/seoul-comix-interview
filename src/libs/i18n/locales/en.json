@@ -1,10 +1,20 @@
 {
   "common": {
     "southKoreanWon": "The South Korean Won",
-    "all": "All"
+    "all": "All",
+    "noData": "There's no data",
+    "openMenu": "Open menu",
+    "cancel": "Cancel",
+    "search": "Search"
   },
-  "login": {
+  "language": {
+    "select": "Select language",
+    "english": "English",
+    "korean": "Korean"
+  },
+  "auth": {
     "login": "Login",
+    "logout": "Logout",
     "username": "Username",
     "password": "Password"
   },

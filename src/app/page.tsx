@@ -1,20 +1,23 @@
 "use client";
 
 import { trpc } from "@/trpc/client";
+import { NoData } from "./_components/composites/no-data";
 import { Pagination } from "./_components/composites/pagination";
-import { CategoryFilter } from "./_components/containers/restaurant/category-filter";
+import { RestaurantCategoryFilter } from "./_components/containers/restaurant/category-filter";
 import { RestaurantListItem } from "./_components/containers/restaurant/list-item";
+import { RestaurantSearch } from "./_components/containers/restaurant/search";
 import { cn } from "./_libs/classnames";
 import { useRestaurantStore } from "./_stores/restaurant";
 
 export default function HomePage() {
   const { filter, setFilter } = useRestaurantStore();
-  const { data: restaurantData } =
+  const { data: restaurantData, isLoading } =
     trpc.restaurant.getRestaurants.useQuery(filter);
 
   return (
     <div className="flex flex-col gap-4 p-4">
-      <CategoryFilter />
+      <RestaurantSearch containerClassName="sm:hidden" />
+      <RestaurantCategoryFilter />
       <div
         className={cn(
           "flex",
@@ -26,6 +29,11 @@ export default function HomePage() {
           <RestaurantListItem key={restaurant.id} restaurant={restaurant} />
         ))}
       </div>
+      <NoData
+        className={cn(
+          restaurantData?.pagination?.total === 0 && !isLoading ? "" : "hidden",
+        )}
+      />
       <Pagination
         currentPage={filter.page}
         totalPage={restaurantData?.pagination?.totalPage || 0}

@@ -20,4 +20,38 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 );
 Input.displayName = "Input";
 
-export { Input, type InputProps };
+type InputWithIconProps = React.InputHTMLAttributes<HTMLInputElement> & {
+  icon?: React.ReactNode;
+  containerClassName?: React.HTMLAttributes<HTMLDivElement>["className"];
+};
+
+const InputWithIcon = React.forwardRef<HTMLInputElement, InputWithIconProps>(
+  ({ icon, className, type, containerClassName, ...props }, ref) => {
+    if (!icon) {
+      return <Input type={type} className={className} ref={ref} {...props} />;
+    }
+
+    return (
+      <div
+        className={cn(
+          "flex h-12 items-center rounded-md border border-input bg-background pl-3 ring-offset-background focus-within:ring-1 focus-within:ring-ring focus-within:ring-offset-2",
+          containerClassName,
+        )}
+      >
+        {icon}
+        <input
+          type={type}
+          className={cn(
+            "h-11 w-full rounded-md bg-background p-2 placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
+            className,
+          )}
+          ref={ref}
+          {...props}
+        />
+      </div>
+    );
+  },
+);
+InputWithIcon.displayName = "InputWithIcon";
+
+export { Input, InputWithIcon, type InputProps, type InputWithIconProps };

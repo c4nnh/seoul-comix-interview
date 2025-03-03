@@ -82,22 +82,22 @@ export default function LoginPage() {
             )}
           >
             <span className="text-center text-3xl font-bold text-primary">
-              {t("login.login")}
+              {t("auth.login")}
             </span>
             <div className="mt-4" />
             <FormInput<LoginFormData>
               name="username"
-              label={t("login.username")}
+              label={t("auth.username")}
             />
             <FormPasswordInput<LoginFormData>
               name="password"
-              label={t("login.password")}
+              label={t("auth.password")}
             />
             <Button
               disabled={loginStatus === "loading"}
               onClick={handleSubmit(handleLogin)}
             >
-              {t("login.login")}
+              {t("auth.login")}
             </Button>
           </div>
         </FormProvider>
