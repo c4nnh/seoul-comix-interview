@@ -1,7 +1,9 @@
 import { ErrorCode } from "@/types/error";
+import { useTranslations } from "next-intl";
 
 export function useTranslator() {
-  // TODO: use i18next or another library for translations
+  const t = useTranslations();
+
   function translate(key?: string) {
     if (!key) {
       return "";
@@ -9,11 +11,11 @@ export function useTranslator() {
 
     switch (key) {
       case ErrorCode.NOT_EMPTY:
-        return "Please fill this field";
+        return t("error.notEmpty");
       case ErrorCode.INVALID_CREDENTIALS:
-        return "Username or password is incorrect";
-      case ErrorCode.INTERNAL_SEVERAL_ERROR:
-        return "Something went wrong. Please try again later";
+        return t("error.invalidCredentials");
+      case ErrorCode.INTERNAL_SEVER_ERROR:
+        return t("error.internalServerError");
       default:
         return key;
     }

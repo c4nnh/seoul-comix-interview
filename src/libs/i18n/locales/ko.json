@@ -2,27 +2,32 @@
   "common": {
     "southKoreanWon": "만원",
     "all": "전체",
-    "noData": "There's no data",
-    "openMenu": "Open menu",
-    "cancel": "Cancel",
-    "search": "Search"
+    "noData": "데이터가 없습니다",
+    "openMenu": "메뉴 열기",
+    "cancel": "취소",
+    "search": "검색"
+  },
+  "error": {
+    "notEmpty": "이 필드를 작성해주세요",
+    "invalidCredentials": "아이디 또는 비밀번호가 잘못되었습니다",
+    "internalServerError": "문제가 발생했습니다. 나중에 다시 시도해주세요"
   },
   "language": {
-    "select": "Select language",
-    "english": "English",
-    "korean": "Korean"
+    "select": "언어 선택",
+    "english": "영어",
+    "korean": "한국어"
   },
   "auth": {
-    "login": "Login",
-    "logout": "Logout",
-    "username": "Username",
-    "password": "Password",
-    "confirmLogout": "Confirm logout",
-    "confirmLogin": "You need to login first to use this feature"
+    "login": "로그인",
+    "logout": "로그아웃",
+    "username": "아이디",
+    "password": "비밀번호",
+    "confirmLogout": "로그아웃을 확인하세요",
+    "confirmLogin": "이 기능을 사용하려면 먼저 로그인해야 합니다"
   },
   "favorite": {
-    "add": "Add favorite",
-    "remove": "Remove favorite"
+    "add": "즐겨찾기에 추가",
+    "remove": "즐겨찾기에서 제거"
   },
   "restaurant": {
     "category": {
