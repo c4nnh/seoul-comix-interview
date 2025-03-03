@@ -5,11 +5,7 @@ import "./src/env";
 
 const withNextIntl = createNextIntlPlugin("./src/libs/i18n/request.ts");
 
-const configWithLogtail = withLogtail({
-  experimental: {
-    nodeMiddleware: true,
-  },
-} as NextConfig);
+const configWithLogtail = withLogtail({} as NextConfig);
 
 const configWithNextIntl = withNextIntl(configWithLogtail);
 

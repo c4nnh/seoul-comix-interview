@@ -1,7 +1,7 @@
 import { RestaurantCategory } from "@prisma/client";
 import { useTranslations } from "next-intl";
 
-export function getCategoryLabel(category: RestaurantCategory) {
+export function CategoryLabel({ category }: { category: RestaurantCategory }) {
   const t = useTranslations();
 
   switch (category) {

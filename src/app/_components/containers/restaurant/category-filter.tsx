@@ -1,6 +1,6 @@
 import { cn } from "@/app/_libs/classnames";
 import { useRestaurantStore } from "@/app/_stores/restaurant";
-import { getCategoryLabel } from "@/app/_utils/category";
+import { CategoryLabel } from "@/app/_utils/category";
 import { RestaurantCategory } from "@prisma/client";
 import { useTranslations } from "next-intl";
 import { Button } from "../../ui/button";
@@ -40,7 +40,7 @@ export function RestaurantCategoryFilter() {
           }
           size="sm"
         >
-          {getCategoryLabel(category)}
+          <CategoryLabel category={category} />
         </Button>
       ))}
     </div>

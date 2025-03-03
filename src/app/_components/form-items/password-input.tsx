@@ -50,6 +50,7 @@ export function FormPasswordInput<T>({
               type={type}
               className={cn(
                 "w-full bg-background pr-2 placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50",
+                className,
               )}
               {...{ value, onChange, onBlur }}
               {...inputProps}

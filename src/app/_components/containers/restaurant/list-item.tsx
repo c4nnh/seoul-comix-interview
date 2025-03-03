@@ -1,6 +1,6 @@
 "use client";
 
-import { getCategoryLabel } from "@/app/_utils/category";
+import { CategoryLabel } from "@/app/_utils/category";
 import { Restaurant } from "@/types/restaurant";
 import { useTranslations } from "next-intl";
 import { ImageSlider } from "../../composites/image-slider";
@@ -50,8 +50,9 @@ export function RestaurantListItem({ restaurant }: Props) {
         />
         <div className="mt-1" />
         <span className="text-sm text-[#475467]">
-          {getCategoryLabel(restaurant.category)} · {restaurant.priceFrom}~
-          {restaurant.priceTo} {t("common.southKoreanWon")}
+          <CategoryLabel category={restaurant.category} /> ·{" "}
+          {restaurant.priceFrom}~{restaurant.priceTo}{" "}
+          {t("common.southKoreanWon")}
         </span>
       </div>
     </div>

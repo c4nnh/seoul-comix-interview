@@ -100,6 +100,7 @@ function LanguageSelector() {
           <Image
             src={getFlagUrlByLocale(locale as Locale)}
             className="h-4 w-6 sm:h-6 sm:w-8"
+            alt={locale}
           />
         </SelectValue>
       </SelectTrigger>
