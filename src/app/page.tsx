@@ -30,7 +30,7 @@ export default function HomePage() {
           <RestaurantListItem key={restaurant.id} restaurant={restaurant} />
         ))}
       </div>
-      <Loading />
+      <Loading className={cn(isLoading ? "" : "hidden")} />
       <NoData
         className={cn(
           restaurantData?.pagination?.total === 0 && !isLoading ? "" : "hidden",
