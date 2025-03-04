@@ -1,6 +1,7 @@
 "use client";
 
 import { trpc } from "@/trpc/client";
+import { Loading } from "./_components/composites/loading";
 import { NoData } from "./_components/composites/no-data";
 import { Pagination } from "./_components/composites/pagination";
 import { RestaurantCategoryFilter } from "./_components/containers/restaurant/category-filter";
@@ -29,6 +30,7 @@ export default function HomePage() {
           <RestaurantListItem key={restaurant.id} restaurant={restaurant} />
         ))}
       </div>
+      <Loading />
       <NoData
         className={cn(
           restaurantData?.pagination?.total === 0 && !isLoading ? "" : "hidden",

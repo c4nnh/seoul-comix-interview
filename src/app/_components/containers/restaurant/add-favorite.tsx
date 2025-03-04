@@ -47,6 +47,10 @@ export function AddFavorite({ restaurantId, isFavorite }: Props) {
       return;
     }
 
+    if (removeFavoriteMutation.isPending || addFavoriteMutation.isPending) {
+      return;
+    }
+
     if (isFavorite) {
       removeFavoriteMutation.mutate({
         restaurantId,
@@ -68,6 +72,9 @@ export function AddFavorite({ restaurantId, isFavorite }: Props) {
         variant="ghost"
         title={isFavorite ? t("favorite.remove") : t("favorite.add")}
         onClick={handleAddFavorite}
+        disabled={
+          removeFavoriteMutation.isPending || addFavoriteMutation.isPending
+        }
       >
         {isFavorite ? (
           <IconFilledHeart className="text-primary" />

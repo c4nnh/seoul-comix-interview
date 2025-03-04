@@ -10,9 +10,11 @@ import { useTranslations } from "next-intl";
 import { redirect } from "next/navigation";
 import { FormProvider, useForm } from "react-hook-form";
 import { z } from "zod";
+import { LanguageSelector } from "../_components/containers/language-selector";
 import { FormInput } from "../_components/form-items/input";
 import { FormPasswordInput } from "../_components/form-items/password-input";
 import { Button } from "../_components/ui/button";
+import { Image } from "../_components/ui/image";
 import { useTranslator } from "../_hooks/use-translator";
 import { cn } from "../_libs/classnames";
 
@@ -70,7 +72,13 @@ export default function LoginPage() {
         "sm:flex-row sm:items-center sm:justify-center",
       )}
     >
-      <div className={cn("flex-1 bg-red-200", "hidden sm:flex")} />
+      <div className={cn("h-full flex-1", "hidden sm:flex")}>
+        <Image
+          src="/images/meals/fish.png"
+          className="h-full w-full object-cover"
+          alt="Fish"
+        />
+      </div>
       <div
         className={cn("flex", "sm:flex-1 sm:items-center sm:justify-center")}
       >
@@ -99,6 +107,9 @@ export default function LoginPage() {
             >
               {t("auth.login")}
             </Button>
+            <div className="mt-2 flex w-full justify-center">
+              <LanguageSelector />
+            </div>
           </div>
         </FormProvider>
       </div>

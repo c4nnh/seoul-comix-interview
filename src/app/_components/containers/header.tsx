@@ -1,11 +1,9 @@
 "use client";
 
 import { useRestaurantStore } from "@/app/_stores/restaurant";
-import { setLocale } from "@/services/locale";
 import { trpc } from "@/trpc/client";
-import { Locale } from "@/types/locale";
 import { signOut, useSession } from "next-auth/react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { redirect } from "next/navigation";
 import { IconLogo } from "../icons/logo";
 import { Button } from "../ui/button";
@@ -18,14 +16,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "../ui/dialog";
-import { Image } from "../ui/image";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../ui/select";
+import { LanguageSelector } from "./language-selector";
 import { RestaurantSearch } from "./restaurant/search";
 
 export function Header() {
@@ -48,7 +39,7 @@ export function Header() {
         ) : (
           <Button
             variant="ghost"
-            className="text-sm font-bold text-white hover:bg-transparent hover:text-white sm:text-base"
+            className="px-0 text-sm font-bold text-white hover:bg-transparent hover:text-white sm:text-base"
             onClick={() => redirect("/login")}
           >
             {t("auth.login")}
@@ -87,38 +78,4 @@ function Logout() {
       </DialogContent>
     </Dialog>
   );
-}
-
-function LanguageSelector() {
-  const t = useTranslations();
-  const locale = useLocale();
-
-  return (
-    <Select value={locale} onValueChange={setLocale}>
-      <SelectTrigger className="w-fit gap-1 border-none px-0 focus:border-none">
-        <SelectValue placeholder={t("language.select")}>
-          <Image
-            src={getFlagUrlByLocale(locale as Locale)}
-            className="h-4 w-6 sm:h-6 sm:w-8"
-            alt={locale}
-          />
-        </SelectValue>
-      </SelectTrigger>
-      <SelectContent>
-        <SelectItem value="en">{t("language.english")}</SelectItem>
-        <SelectItem value="ko">{t("language.korean")}</SelectItem>
-      </SelectContent>
-    </Select>
-  );
-}
-
-function getFlagUrlByLocale(language: Locale) {
-  switch (language) {
-    case "en": {
-      return "/images/flags/united-kingdom.png";
-    }
-    case "ko": {
-      return "/images/flags/korean.png";
-    }
-  }
 }
