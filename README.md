@@ -75,6 +75,7 @@ npm install -g pnpm
 ### **Logging & Monitoring**
 
 - [@logtail/next](https://www.npmjs.com/package/@logtail/next): A logging library for structured logs with Logtail in Next.js applications.
+- [Sentry](https://sentry.io): An application monitoring platform for identifying and fixing errors in real time.
 
 ### **Utility Libraries**
 
